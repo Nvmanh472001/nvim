@@ -135,11 +135,27 @@ if exists("&termguicolors") && exists("&winblend")
   set wildoptions=pum
   set pumblend=5
   set background=dark
-  " Use NeoSolarized
-  let g:onedark_transparent_background = v:true
-  let g:onedark_style = 'cool'
   colorscheme onedark
 endif
+
+lua << EOF
+-- Lua
+require('onedark').setup { 
+    -- Main options --
+     style = 'cool', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+     transparent = true,  -- Show/hide background 
+     
+     -- Plugins Config --
+     diagnostics = {
+        darker = true, -- darker colors for diagnostic
+        undercurl = true,   -- use undercurl for diagnostics
+        background = true,    -- use background color for virtual text
+     }
+     
+}
+
+EOF
+
 
 "}}}
 
